@@ -18,9 +18,7 @@ if ( defined( 'KNTNT_MEMORY_LOG' )  && KNTNT_MEMORY_LOG ) {
      register_shutdown_function( function() {
           $uri = $_SERVER['REQUEST_URI'] ?? 'n/a';
           $peak = memory_get_peak_usage() / 1024 / 1024;
-          date_default_timezone_set('UTC');
-          $current_time = date("[d-M-Y H:i:s T]");
-          $message = sprintf("$current_time %6.1f MB %s\n", $peak, $uri);
+          $message = sprintf("Peak memory usage: %6.1f MB %s\n", $peak, $uri);
           error_log( $message );
      } );
 
